@@ -15,7 +15,7 @@
             padding:10px;
             color:white;
             width:500px;
-            height:200px;
+            height:250px;
             margin:0 auto;
 
         }
@@ -24,23 +24,29 @@
         $(document).ready(function() {
 
             $("#sub").click(function() {
+
                 var user_name = $("#name").val();
 
-                $.get("test.php",{name:user_name},function(data){
+                var user_email = $("#email").val();
+
+                var user_pass = $("#pass").val();
+
+                $.post("test.php",{name:user_name,email:user_email,pass:user_pass},function(data){
 
                     $("#result").html(data);
-
                 });
             });
         });
-
     </script>
 </head>
 <body>
     <div id="box">
         <h2>Registreeri siin: </h2>
-        <input type="text" name="name" id="name" placeholder="Sisesta oma nimi"/><br/>
-        <input type="button" name="sub" value="Saada" id="sub"/>
+        <input type="text" name="name" id="name" placeholder="Sisesta oma nimi">
+        <input type="text" name="email" id="email" placeholder="Sisesta oma e-mail">
+        <input type="password" name="pass" id="pass" placeholder="Sisesta parool">
+        <input type="button" name="sub" value="Saada" id="sub" class="btn btn-sm btn-success">
+
         <div id="result"></div>
     </div>
 
